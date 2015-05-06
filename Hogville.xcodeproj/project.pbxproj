@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3586E2CA18C25589001ED67F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3586E2C918C25589001ED67F /* Foundation.framework */; };
+		3586E2CC18C25589001ED67F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3586E2CB18C25589001ED67F /* CoreGraphics.framework */; };
+		3586E2CE18C25589001ED67F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3586E2CD18C25589001ED67F /* UIKit.framework */; };
+		3586E2D018C25589001ED67F /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3586E2CF18C25589001ED67F /* SpriteKit.framework */; };
+		3586E2D618C25589001ED67F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3586E2D418C25589001ED67F /* InfoPlist.strings */; };
+		3586E2D818C25589001ED67F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3586E2D718C25589001ED67F /* main.m */; };
+		3586E2DC18C25589001ED67F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3586E2DB18C25589001ED67F /* AppDelegate.m */; };
+		3586E2DF18C25589001ED67F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3586E2DD18C25589001ED67F /* Main.storyboard */; };
+		3586E2E218C25589001ED67F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3586E2E118C25589001ED67F /* ViewController.m */; };
+		3586E2E518C25589001ED67F /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3586E2E418C25589001ED67F /* MyScene.m */; };
+		3586E2E718C25589001ED67F /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 3586E2E618C25589001ED67F /* Spaceship.png */; };
+		3586E2E918C25589001ED67F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3586E2E818C25589001ED67F /* Images.xcassets */; };
+		3586E2F018C25589001ED67F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3586E2EF18C25589001ED67F /* XCTest.framework */; };
+		3586E2F118C25589001ED67F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3586E2C918C25589001ED67F /* Foundation.framework */; };
+		3586E2F218C25589001ED67F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3586E2CD18C25589001ED67F /* UIKit.framework */; };
+		3586E2FA18C25589001ED67F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3586E2F818C25589001ED67F /* InfoPlist.strings */; };
+		3586E2FC18C25589001ED67F /* HogvilleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3586E2FB18C25589001ED67F /* HogvilleTests.m */; };
+		3586E30C18C255B7001ED67F /* bg_1_dusty.png in Resources */ = {isa = PBXBuildFile; fileRef = 3586E30918C255B7001ED67F /* bg_1_dusty.png */; };
+		3586E30D18C255B7001ED67F /* bg_2_grassy.png in Resources */ = {isa = PBXBuildFile; fileRef = 3586E30A18C255B7001ED67F /* bg_2_grassy.png */; };
+		3586E30E18C255B7001ED67F /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3586E30B18C255B7001ED67F /* sprites.atlas */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3586E2F318C25589001ED67F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3586E2BE18C25589001ED67F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3586E2C518C25589001ED67F;
+			remoteInfo = Hogville;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3586E2C618C25589001ED67F /* Hogville.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hogville.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3586E2C918C25589001ED67F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3586E2CB18C25589001ED67F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3586E2CD18C25589001ED67F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3586E2CF18C25589001ED67F /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		3586E2D318C25589001ED67F /* Hogville-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Hogville-Info.plist"; sourceTree = "<group>"; };
+		3586E2D518C25589001ED67F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3586E2D718C25589001ED67F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3586E2D918C25589001ED67F /* Hogville-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hogville-Prefix.pch"; sourceTree = "<group>"; };
+		3586E2DA18C25589001ED67F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3586E2DB18C25589001ED67F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3586E2DE18C25589001ED67F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3586E2E018C25589001ED67F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3586E2E118C25589001ED67F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3586E2E318C25589001ED67F /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
+		3586E2E418C25589001ED67F /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
+		3586E2E618C25589001ED67F /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		3586E2E818C25589001ED67F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3586E2EE18C25589001ED67F /* HogvilleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HogvilleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3586E2EF18C25589001ED67F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3586E2F718C25589001ED67F /* HogvilleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HogvilleTests-Info.plist"; sourceTree = "<group>"; };
+		3586E2F918C25589001ED67F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3586E2FB18C25589001ED67F /* HogvilleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HogvilleTests.m; sourceTree = "<group>"; };
+		3586E30918C255B7001ED67F /* bg_1_dusty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_1_dusty.png; sourceTree = "<group>"; };
+		3586E30A18C255B7001ED67F /* bg_2_grassy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_2_grassy.png; sourceTree = "<group>"; };
+		3586E30B18C255B7001ED67F /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3586E2C318C25589001ED67F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3586E2CC18C25589001ED67F /* CoreGraphics.framework in Frameworks */,
+				3586E2CE18C25589001ED67F /* UIKit.framework in Frameworks */,
+				3586E2D018C25589001ED67F /* SpriteKit.framework in Frameworks */,
+				3586E2CA18C25589001ED67F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3586E2EB18C25589001ED67F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3586E2F018C25589001ED67F /* XCTest.framework in Frameworks */,
+				3586E2F218C25589001ED67F /* UIKit.framework in Frameworks */,
+				3586E2F118C25589001ED67F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3586E2BD18C25589001ED67F = {
+			isa = PBXGroup;
+			children = (
+				3586E2D118C25589001ED67F /* Hogville */,
+				3586E2F518C25589001ED67F /* HogvilleTests */,
+				3586E2C818C25589001ED67F /* Frameworks */,
+				3586E2C718C25589001ED67F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3586E2C718C25589001ED67F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3586E2C618C25589001ED67F /* Hogville.app */,
+				3586E2EE18C25589001ED67F /* HogvilleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3586E2C818C25589001ED67F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3586E2C918C25589001ED67F /* Foundation.framework */,
+				3586E2CB18C25589001ED67F /* CoreGraphics.framework */,
+				3586E2CD18C25589001ED67F /* UIKit.framework */,
+				3586E2CF18C25589001ED67F /* SpriteKit.framework */,
+				3586E2EF18C25589001ED67F /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3586E2D118C25589001ED67F /* Hogville */ = {
+			isa = PBXGroup;
+			children = (
+				3586E30718C255B7001ED67F /* Art */,
+				3586E2DA18C25589001ED67F /* AppDelegate.h */,
+				3586E2DB18C25589001ED67F /* AppDelegate.m */,
+				3586E2DD18C25589001ED67F /* Main.storyboard */,
+				3586E2E018C25589001ED67F /* ViewController.h */,
+				3586E2E118C25589001ED67F /* ViewController.m */,
+				3586E2E318C25589001ED67F /* MyScene.h */,
+				3586E2E418C25589001ED67F /* MyScene.m */,
+				3586E2E618C25589001ED67F /* Spaceship.png */,
+				3586E2E818C25589001ED67F /* Images.xcassets */,
+				3586E2D218C25589001ED67F /* Supporting Files */,
+			);
+			path = Hogville;
+			sourceTree = "<group>";
+		};
+		3586E2D218C25589001ED67F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3586E2D318C25589001ED67F /* Hogville-Info.plist */,
+				3586E2D418C25589001ED67F /* InfoPlist.strings */,
+				3586E2D718C25589001ED67F /* main.m */,
+				3586E2D918C25589001ED67F /* Hogville-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3586E2F518C25589001ED67F /* HogvilleTests */ = {
+			isa = PBXGroup;
+			children = (
+				3586E2FB18C25589001ED67F /* HogvilleTests.m */,
+				3586E2F618C25589001ED67F /* Supporting Files */,
+			);
+			path = HogvilleTests;
+			sourceTree = "<group>";
+		};
+		3586E2F618C25589001ED67F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3586E2F718C25589001ED67F /* HogvilleTests-Info.plist */,
+				3586E2F818C25589001ED67F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3586E30718C255B7001ED67F /* Art */ = {
+			isa = PBXGroup;
+			children = (
+				3586E30818C255B7001ED67F /* Backgrounds */,
+				3586E30B18C255B7001ED67F /* sprites.atlas */,
+			);
+			path = Art;
+			sourceTree = "<group>";
+		};
+		3586E30818C255B7001ED67F /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				3586E30918C255B7001ED67F /* bg_1_dusty.png */,
+				3586E30A18C255B7001ED67F /* bg_2_grassy.png */,
+			);
+			path = Backgrounds;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3586E2C518C25589001ED67F /* Hogville */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3586E2FF18C25589001ED67F /* Build configuration list for PBXNativeTarget "Hogville" */;
+			buildPhases = (
+				3586E2C218C25589001ED67F /* Sources */,
+				3586E2C318C25589001ED67F /* Frameworks */,
+				3586E2C418C25589001ED67F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Hogville;
+			productName = Hogville;
+			productReference = 3586E2C618C25589001ED67F /* Hogville.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3586E2ED18C25589001ED67F /* HogvilleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3586E30218C25589001ED67F /* Build configuration list for PBXNativeTarget "HogvilleTests" */;
+			buildPhases = (
+				3586E2EA18C25589001ED67F /* Sources */,
+				3586E2EB18C25589001ED67F /* Frameworks */,
+				3586E2EC18C25589001ED67F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3586E2F418C25589001ED67F /* PBXTargetDependency */,
+			);
+			name = HogvilleTests;
+			productName = HogvilleTests;
+			productReference = 3586E2EE18C25589001ED67F /* HogvilleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3586E2BE18C25589001ED67F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Razeware LLC";
+				TargetAttributes = {
+					3586E2ED18C25589001ED67F = {
+						TestTargetID = 3586E2C518C25589001ED67F;
+					};
+				};
+			};
+			buildConfigurationList = 3586E2C118C25589001ED67F /* Build configuration list for PBXProject "Hogville" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3586E2BD18C25589001ED67F;
+			productRefGroup = 3586E2C718C25589001ED67F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3586E2C518C25589001ED67F /* Hogville */,
+				3586E2ED18C25589001ED67F /* HogvilleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3586E2C418C25589001ED67F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3586E30E18C255B7001ED67F /* sprites.atlas in Resources */,
+				3586E2D618C25589001ED67F /* InfoPlist.strings in Resources */,
+				3586E2E918C25589001ED67F /* Images.xcassets in Resources */,
+				3586E30D18C255B7001ED67F /* bg_2_grassy.png in Resources */,
+				3586E2E718C25589001ED67F /* Spaceship.png in Resources */,
+				3586E2DF18C25589001ED67F /* Main.storyboard in Resources */,
+				3586E30C18C255B7001ED67F /* bg_1_dusty.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3586E2EC18C25589001ED67F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3586E2FA18C25589001ED67F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3586E2C218C25589001ED67F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3586E2E518C25589001ED67F /* MyScene.m in Sources */,
+				3586E2E218C25589001ED67F /* ViewController.m in Sources */,
+				3586E2DC18C25589001ED67F /* AppDelegate.m in Sources */,
+				3586E2D818C25589001ED67F /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3586E2EA18C25589001ED67F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3586E2FC18C25589001ED67F /* HogvilleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3586E2F418C25589001ED67F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3586E2C518C25589001ED67F /* Hogville */;
+			targetProxy = 3586E2F318C25589001ED67F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3586E2D418C25589001ED67F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3586E2D518C25589001ED67F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3586E2DD18C25589001ED67F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3586E2DE18C25589001ED67F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3586E2F818C25589001ED67F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3586E2F918C25589001ED67F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3586E2FD18C25589001ED67F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3586E2FE18C25589001ED67F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3586E30018C25589001ED67F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Hogville/Hogville-Prefix.pch";
+				INFOPLIST_FILE = "Hogville/Hogville-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3586E30118C25589001ED67F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Hogville/Hogville-Prefix.pch";
+				INFOPLIST_FILE = "Hogville/Hogville-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		3586E30318C25589001ED67F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Hogville.app/Hogville";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Hogville/Hogville-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "HogvilleTests/HogvilleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		3586E30418C25589001ED67F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Hogville.app/Hogville";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Hogville/Hogville-Prefix.pch";
+				INFOPLIST_FILE = "HogvilleTests/HogvilleTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3586E2C118C25589001ED67F /* Build configuration list for PBXProject "Hogville" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3586E2FD18C25589001ED67F /* Debug */,
+				3586E2FE18C25589001ED67F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3586E2FF18C25589001ED67F /* Build configuration list for PBXNativeTarget "Hogville" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3586E30018C25589001ED67F /* Debug */,
+				3586E30118C25589001ED67F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3586E30218C25589001ED67F /* Build configuration list for PBXNativeTarget "HogvilleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3586E30318C25589001ED67F /* Debug */,
+				3586E30418C25589001ED67F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3586E2BE18C25589001ED67F /* Project object */;
+}
