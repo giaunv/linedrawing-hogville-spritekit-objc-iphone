@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044615AC1AFADB7400E90D7D /* Pig.m in Sources */ = {isa = PBXBuildFile; fileRef = 044615AB1AFADB7400E90D7D /* Pig.m */; };
 		3586E2CA18C25589001ED67F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3586E2C918C25589001ED67F /* Foundation.framework */; };
 		3586E2CC18C25589001ED67F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3586E2CB18C25589001ED67F /* CoreGraphics.framework */; };
 		3586E2CE18C25589001ED67F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3586E2CD18C25589001ED67F /* UIKit.framework */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		044615AA1AFADB7400E90D7D /* Pig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pig.h; sourceTree = "<group>"; };
+		044615AB1AFADB7400E90D7D /* Pig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pig.m; sourceTree = "<group>"; };
 		3586E2C618C25589001ED67F /* Hogville.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hogville.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3586E2C918C25589001ED67F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3586E2CB18C25589001ED67F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -135,6 +138,8 @@
 				3586E2E118C25589001ED67F /* ViewController.m */,
 				3586E2E318C25589001ED67F /* MyScene.h */,
 				3586E2E418C25589001ED67F /* MyScene.m */,
+				044615AA1AFADB7400E90D7D /* Pig.h */,
+				044615AB1AFADB7400E90D7D /* Pig.m */,
 				3586E2E618C25589001ED67F /* Spaceship.png */,
 				3586E2E818C25589001ED67F /* Images.xcassets */,
 				3586E2D218C25589001ED67F /* Supporting Files */,
@@ -294,6 +299,7 @@
 				3586E2E218C25589001ED67F /* ViewController.m in Sources */,
 				3586E2DC18C25589001ED67F /* AppDelegate.m in Sources */,
 				3586E2D818C25589001ED67F /* main.m in Sources */,
+				044615AC1AFADB7400E90D7D /* Pig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +510,7 @@
 				3586E30118C25589001ED67F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3586E30218C25589001ED67F /* Build configuration list for PBXNativeTarget "HogvilleTests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +519,7 @@
 				3586E30418C25589001ED67F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
