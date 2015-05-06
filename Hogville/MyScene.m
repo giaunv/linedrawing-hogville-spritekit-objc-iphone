@@ -12,7 +12,13 @@
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
-      
+        SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:@"bg_2_grassy"];
+        bg.anchorPoint = CGPointZero;
+        [self addChild:bg];
+        
+        SKSpriteNode *pig = [SKSpriteNode spriteNodeWithImageNamed:@"pig_1"];
+        pig.position = CGPointMake(self.size.width / 2.0f, self.size.height / 2.0f);
+        [self addChild:pig];
     }
     return self;
 }
