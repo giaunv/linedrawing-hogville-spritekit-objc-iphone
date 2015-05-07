@@ -10,4 +10,6 @@
 
 @interface MyScene : SKScene
 
+@property (nonatomic, strong) SKSpriteNode *homeNode;
+
 @end

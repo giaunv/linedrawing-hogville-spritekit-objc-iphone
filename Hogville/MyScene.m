@@ -13,18 +13,12 @@
     Pig *_movingPig;
     NSTimeInterval _lastUpdateTime;
     NSTimeInterval _dt;
+    NSTimeInterval _currentSpawnTime;
 }
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
-        SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:@"bg_2_grassy"];
-        bg.anchorPoint = CGPointZero;
-        [self addChild:bg];
-        
-        Pig *pig = [[Pig alloc] initWithImageNamed:@"pig_1"];
-        pig.name = @"pig";
-        pig.position = CGPointMake(self.size.width / 2.0f, self.size.height / 2.0f);
-        [self addChild:pig];
+        [self loadLevel];
     }
     return self;
 }
@@ -78,5 +72,25 @@
         CGPathRelease(path);
         [self.view.layer addSublayer:lineLayer];
     }];
+}
+
+-(void)loadLevel{
+    SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:@"bg_2_grassy"];
+    bg.anchorPoint = CGPointZero;
+    [self addChild:bg];
+    
+    SKSpriteNode *foodNode = [SKSpriteNode spriteNodeWithImageNamed:@"trough_3_full"];
+    foodNode.name = @"food";
+    foodNode.zPosition = 0;
+    foodNode.position = CGPointMake(250.0f, 200.0f);
+    
+    [self addChild:foodNode];
+    
+    self.homeNode = [SKSpriteNode spriteNodeWithImageNamed:@"barn"];
+    self.homeNode.name = @"home";
+    self.homeNode.zPosition = 0;
+    self.homeNode.position = CGPointMake(380.0f, 20.0f);
+    [self addChild:self.homeNode];
+    _currentSpawnTime = 5.0;
 }
 @end
