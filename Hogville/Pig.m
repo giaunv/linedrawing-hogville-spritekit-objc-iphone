@@ -13,11 +13,17 @@ static const int POINTS_PER_SEC = 80;
 @implementation Pig{
     NSMutableArray *_wayPoints;
     CGPoint _velocity;
+    SKAction *_moveAnimation;
 }
 
 -(instancetype)initWithImageNamed:(NSString *)name{
     if (self = [super initWithImageNamed:name]) {
         _wayPoints = [NSMutableArray array];
+        
+        SKTexture *texture1 = [SKTexture textureWithImageNamed:@"pig_1"];
+        SKTexture *texture2 = [SKTexture textureWithImageNamed:@"pig_2"];
+        SKTexture *texture3 = [SKTexture textureWithImageNamed:@"pig_3"];
+        _moveAnimation = [SKAction animateWithTextures:@[texture1, texture2, texture3] timePerFrame:0.1];
     }
     
     return self;
@@ -28,6 +34,10 @@ static const int POINTS_PER_SEC = 80;
 }
 
 -(void)move:(NSNumber *)dt{
+    if (![self actionForKey:@"moveAction"]) {
+        [self runAction:_moveAnimation withKey:@"moveAction"];
+    }
+    
     CGPoint currentPosition = self.position;
     CGPoint newPosition;
     
