@@ -11,4 +11,5 @@
 @interface Pig : SKSpriteNode
 -(void)addPointToMove:(CGPoint)point;
 -(void)move:(NSNumber *)dt;
+-(CGPathRef)createPathToMove;
 @end

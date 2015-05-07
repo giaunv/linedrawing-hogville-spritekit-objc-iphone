@@ -47,4 +47,21 @@ static const int POINTS_PER_SEC = 80;
         }
     }
 }
+
+-(CGPathRef)createPathToMove{
+    CGMutablePathRef ref = CGPathCreateMutable();
+    
+    for (int i = 0; i < [_wayPoints count]; ++i) {
+        CGPoint p = [_wayPoints[i] CGPointValue];
+        p = [self.scene convertPointToView:p];
+        
+        if (i == 0) {
+            CGPathMoveToPoint(ref, NULL, p.x, p.y);
+        } else {
+            CGPathAddLineToPoint(ref, NULL, p.x, p.y);
+        }
+    }
+    
+    return ref;
+}
 @end

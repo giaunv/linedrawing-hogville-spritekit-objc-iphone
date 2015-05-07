@@ -32,7 +32,6 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     CGPoint touchPoint = [[touches anyObject] locationInNode:self.scene];
     SKNode *node = [self nodeAtPoint:touchPoint];
-    NSLog(@"%@", node.name);
     
     if ([node.name isEqualToString:@"pig"]) {
         [(Pig *)node addPointToMove:touchPoint];
@@ -54,6 +53,30 @@
     [self enumerateChildNodesWithName:@"pig" usingBlock:^(SKNode *node, BOOL *stop) {
         [(Pig *)node move:@(_dt)];
     }];
+    
+    [self drawLines];
 }
 
+-(void)drawLines{
+    NSMutableArray *temp = [NSMutableArray array];
+    for (CALayer *layer in self.view.layer.sublayers) {
+        if ([layer.name isEqualToString:@"line"]) {
+            [temp addObject:layer];
+        }
+    }
+    
+    [temp makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+    
+    [self enumerateChildNodesWithName:@"pig" usingBlock:^(SKNode *node, BOOL *stop) {
+        CAShapeLayer *lineLayer = [CAShapeLayer layer];
+        lineLayer.name = @"line";
+        lineLayer.strokeColor = [UIColor grayColor].CGColor;
+        lineLayer.fillColor = nil;
+        
+        CGPathRef path = [(Pig *)node createPathToMove];
+        lineLayer.path = path;
+        CGPathRelease(path);
+        [self.view.layer addSublayer:lineLayer];
+    }];
+}
 @end
