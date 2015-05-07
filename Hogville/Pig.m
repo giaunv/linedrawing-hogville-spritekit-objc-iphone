@@ -49,6 +49,7 @@ static const int POINTS_PER_SEC = 80;
     }
     
     self.position = [self checkBoundaries:newPosition];
+    self.zRotation = atan2f(_velocity.y, _velocity.x) + M_PI_2;
 }
 
 -(CGPathRef)createPathToMove{
