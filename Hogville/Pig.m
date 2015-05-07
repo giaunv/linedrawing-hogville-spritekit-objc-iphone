@@ -40,12 +40,15 @@ static const int POINTS_PER_SEC = 80;
         _velocity = CGPointMake(direction.x * POINTS_PER_SEC, direction.y * POINTS_PER_SEC);
         
         newPosition = CGPointMake(currentPosition.x + _velocity.x * [dt doubleValue], currentPosition.y + _velocity.y * [dt doubleValue]);
-        self.position = newPosition;
         
         if(CGRectContainsPoint(self.frame, targetPoint)){
             [_wayPoints removeObjectAtIndex:0];
         }
+    } else {
+        newPosition = CGPointMake(currentPosition.x + _velocity.x * [dt doubleValue], currentPosition.y + _velocity.y * [dt doubleValue]);
     }
+    
+    self.position = [self checkBoundaries:newPosition];
 }
 
 -(CGPathRef)createPathToMove{
@@ -63,5 +66,32 @@ static const int POINTS_PER_SEC = 80;
     }
     
     return ref;
+}
+
+-(CGPoint)checkBoundaries:(CGPoint)point{
+    CGPoint newVelocity = _velocity;
+    CGPoint newPosition = point;
+    
+    CGPoint bottomLeft = CGPointZero;
+    CGPoint topRight = CGPointMake(self.scene.size.width, self.scene.size.height);
+    
+    if (newPosition.x <= bottomLeft.x) {
+        newPosition.x = bottomLeft.x;
+        newVelocity.x = -newVelocity.x;
+    } else if (newPosition.x >= topRight.x){
+        newPosition.x = topRight.x;
+        newVelocity.x = -newVelocity.x;
+    }
+    
+    if (newPosition.y <= bottomLeft.y) {
+        newPosition.y = bottomLeft.y;
+        newVelocity.y = -newVelocity.y;
+    } else if (newPosition.y >= topRight.y) {
+        newPosition.y = topRight.y;
+        newVelocity.y = -newVelocity.y;
+    }
+    
+    _velocity = newVelocity;
+    return newPosition;
 }
 @end
