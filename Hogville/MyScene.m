@@ -9,6 +9,10 @@
 #import "MyScene.h"
 #import "Pig.h"
 
+@interface MyScene()<SKPhysicsContactDelegate>
+
+@end
+
 @implementation MyScene{
     Pig *_movingPig;
     NSTimeInterval _lastUpdateTime;
@@ -18,6 +22,9 @@
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
+        self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
+        self.physicsWorld.contactDelegate = self;
+        
         [self loadLevel];
         [self spawnAnimal];
     }
@@ -50,6 +57,22 @@
     }];
     
     [self drawLines];
+}
+
+-(void)didBeginContact:(SKPhysicsContact *)contact{
+    SKNode *firstNode = contact.bodyA.node;
+    SKNode *secondNode = contact.bodyB.node;
+    
+    uint32_t collision = firstNode.physicsBody.categoryBitMask | secondNode.physicsBody.categoryBitMask;
+    
+    if(collision == (LDPhysicsCategoryAnimal | LDPhysicsCategoryAnimal)) {
+        NSLog(@"Animal collision detected");
+    } else if(collision == (LDPhysicsCategoryAnimal | LDPhysicsCategoryFood)) {
+        NSLog(@"Food collision detected.");
+    } else {
+        NSLog(@"Error: Unknown collision category %d", collision);
+    }
+
 }
 
 -(void)drawLines{
