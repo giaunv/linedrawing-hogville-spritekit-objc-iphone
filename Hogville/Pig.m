@@ -17,6 +17,7 @@ static const int POINTS_PER_SEC = 80;
     SKAction *_moveAnimation;
     BOOL _hungry;
     BOOL _eating;
+    BOOL _removing;
 }
 
 -(instancetype)initWithImageNamed:(NSString *)name{
@@ -71,6 +72,7 @@ static const int POINTS_PER_SEC = 80;
         
         self.position = [self checkBoundaries:newPosition];
         self.zRotation = atan2f(_velocity.y, _velocity.x) + M_PI_2;
+        [self checkForHome];
     }
 }
 
@@ -140,6 +142,23 @@ static const int POINTS_PER_SEC = 80;
         }];
         
         [self runAction:[SKAction sequence:@[[SKAction waitForDuration:1.0], blockAction]]];
+    }
+}
+
+-(void)checkForHome {
+    if (_hungry || _removing) {
+        return;
+    }
+    
+    SKSpriteNode *homeNode = ((MyScene *)self.scene).homeNode;
+    CGRect homeRect = homeNode.frame;
+    
+    if (CGRectIntersectsRect(self.frame, homeRect)) {
+        _removing = YES;
+        [_wayPoints removeAllObjects];
+        [self removeAllActions];
+        
+        [self runAction:[SKAction sequence:@[[SKAction group:@[[SKAction fadeAlphaTo:0.0f duration:0.5], [SKAction moveTo:homeNode.position duration:0.5]]], [SKAction removeFromParent]]]];
     }
 }
 @end
