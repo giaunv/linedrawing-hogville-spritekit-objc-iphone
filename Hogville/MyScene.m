@@ -41,6 +41,7 @@
     SKNode *node = [self nodeAtPoint:touchPoint];
     
     if ([node.name isEqualToString:@"pig"]) {
+        [(Pig *)node clearWayPoints];
         [(Pig *)node addPointToMove:touchPoint];
         _movingPig = (Pig *)node;
     }
@@ -147,6 +148,7 @@
     pig.zPosition = 1;
     
     [self addChild:pig];
+    [pig moveRandom];
     
     [self runAction:[SKAction sequence:@[[SKAction waitForDuration:_currentSpawnTime], [SKAction performSelector:@selector(spawnAnimal) onTarget:self]]]];
 }

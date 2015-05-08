@@ -161,4 +161,9 @@ static const int POINTS_PER_SEC = 80;
         [self runAction:[SKAction sequence:@[[SKAction group:@[[SKAction fadeAlphaTo:0.0f duration:0.5], [SKAction moveTo:homeNode.position duration:0.5]]], [SKAction removeFromParent]]]];
     }
 }
+
+-(void)clearWayPoints{
+    [_wayPoints removeAllObjects];
+}
+
 @end

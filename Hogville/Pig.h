@@ -13,4 +13,6 @@
 -(void)move:(NSNumber *)dt;
 -(CGPathRef)createPathToMove;
 -(void)eat;
+-(void)moveRandom;
+-(void)clearWayPoints;
 @end
