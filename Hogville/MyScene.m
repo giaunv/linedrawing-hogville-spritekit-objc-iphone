@@ -19,6 +19,7 @@
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         [self loadLevel];
+        [self spawnAnimal];
     }
     return self;
 }
@@ -92,5 +93,22 @@
     self.homeNode.position = CGPointMake(380.0f, 20.0f);
     [self addChild:self.homeNode];
     _currentSpawnTime = 5.0;
+}
+
+-(void)spawnAnimal{
+    _currentSpawnTime -= 0.2;
+    
+    if (_currentSpawnTime < 1.0) {
+        _currentSpawnTime = 1.0;
+    }
+    
+    Pig *pig = [[Pig alloc] initWithImageNamed:@"pig_1"];
+    pig.position = CGPointMake(20.0f, arc4random() % 300);
+    pig.name = @"pig";
+    pig.zPosition = 1;
+    
+    [self addChild:pig];
+    
+    [self runAction:[SKAction sequence:@[[SKAction waitForDuration:_currentSpawnTime], [SKAction performSelector:@selector(spawnAnimal) onTarget:self]]]];
 }
 @end
