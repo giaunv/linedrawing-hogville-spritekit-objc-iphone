@@ -19,6 +19,8 @@
     NSTimeInterval _dt;
     NSTimeInterval _currentSpawnTime;
     BOOL _gameOver;
+    NSInteger _animalCount;
+    SKLabelNode *_hud;
 }
 
 -(id)initWithSize:(CGSize)size {    
@@ -128,7 +130,14 @@
     self.homeNode.zPosition = 0;
     self.homeNode.position = CGPointMake(380.0f, 20.0f);
     [self addChild:self.homeNode];
-    _currentSpawnTime = 5.0;
+    _currentSpawnTime = 20.0;
+    
+    _hud = [SKLabelNode  labelNodeWithFontNamed:@"Thonburi-Bold"];
+    _hud.text = @"0";
+    _hud.fontSize = 35.0f;
+    _hud.position = CGPointMake(20, self.size.height - 40.0f);
+    _hud.zPosition = 5;
+    [self addChild:_hud];
 }
 
 -(void)spawnAnimal{
@@ -186,9 +195,16 @@
         [node removeFromParent];
     }];
     
-    _currentSpawnTime = 5.0f;
+    _currentSpawnTime = 20.0f;
     _gameOver = NO;
+    _animalCount = 0;
+    _hud.text = [NSString stringWithFormat:@"%d", 0];
     [self spawnAnimal];
+}
+
+- (void)pigRemoved{
+    _animalCount++;
+    _hud.text = [NSString stringWithFormat:@"%ld", _animalCount];
 }
 
 @end

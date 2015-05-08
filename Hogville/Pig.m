@@ -157,6 +157,7 @@ static const int POINTS_PER_SEC = 80;
         _removing = YES;
         [_wayPoints removeAllObjects];
         [self removeAllActions];
+        [(MyScene *)self.scene pigRemoved];
         
         [self runAction:[SKAction sequence:@[[SKAction group:@[[SKAction fadeAlphaTo:0.0f duration:0.5], [SKAction moveTo:homeNode.position duration:0.5]]], [SKAction removeFromParent]]]];
     }

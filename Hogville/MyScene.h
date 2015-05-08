@@ -16,5 +16,6 @@ typedef NS_OPTIONS(uint32_t, LDPhysicsCategory) {
 @interface MyScene : SKScene
 
 @property (nonatomic, strong) SKSpriteNode *homeNode;
+-(void)pigRemoved;
 
 @end
