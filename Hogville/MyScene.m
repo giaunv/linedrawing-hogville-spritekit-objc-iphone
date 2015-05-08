@@ -68,11 +68,14 @@
     if(collision == (LDPhysicsCategoryAnimal | LDPhysicsCategoryAnimal)) {
         NSLog(@"Animal collision detected");
     } else if(collision == (LDPhysicsCategoryAnimal | LDPhysicsCategoryFood)) {
-        NSLog(@"Food collision detected.");
+        if ([firstNode.name isEqualToString:@"pig"]) {
+            [(Pig *)firstNode eat];
+        } else {
+            [(Pig *)secondNode eat];
+        }
     } else {
         NSLog(@"Error: Unknown collision category %d", collision);
     }
-
 }
 
 -(void)drawLines{

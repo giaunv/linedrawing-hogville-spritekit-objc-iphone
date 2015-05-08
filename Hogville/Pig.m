@@ -15,6 +15,8 @@ static const int POINTS_PER_SEC = 80;
     NSMutableArray *_wayPoints;
     CGPoint _velocity;
     SKAction *_moveAnimation;
+    BOOL _hungry;
+    BOOL _eating;
 }
 
 -(instancetype)initWithImageNamed:(NSString *)name{
@@ -30,6 +32,8 @@ static const int POINTS_PER_SEC = 80;
         self.physicsBody.categoryBitMask = LDPhysicsCategoryAnimal;
         self.physicsBody.contactTestBitMask = LDPhysicsCategoryAnimal | LDPhysicsCategoryFood;
         self.physicsBody.collisionBitMask = kNilOptions;
+        
+        _hungry = YES;
     }
     
     return self;
@@ -40,32 +44,44 @@ static const int POINTS_PER_SEC = 80;
 }
 
 -(void)move:(NSNumber *)dt{
-    if (![self actionForKey:@"moveAction"]) {
-        [self runAction:_moveAnimation withKey:@"moveAction"];
-    }
-    
-    CGPoint currentPosition = self.position;
-    CGPoint newPosition;
-    
-    if ([_wayPoints count] > 0){
-        CGPoint targetPoint = [[_wayPoints firstObject] CGPointValue];
-        
-        CGPoint offset = CGPointMake(targetPoint.x - currentPosition.x, targetPoint.y - currentPosition.y);
-        CGFloat length = sqrtf(offset.x * offset.x + offset.y * offset.y);
-        CGPoint direction = CGPointMake(offset.x/length, offset.y/length);
-        _velocity = CGPointMake(direction.x * POINTS_PER_SEC, direction.y * POINTS_PER_SEC);
-        
-        newPosition = CGPointMake(currentPosition.x + _velocity.x * [dt doubleValue], currentPosition.y + _velocity.y * [dt doubleValue]);
-        
-        if(CGRectContainsPoint(self.frame, targetPoint)){
-            [_wayPoints removeObjectAtIndex:0];
+    if (!_eating) {
+        if (![self actionForKey:@"moveAction"]) {
+            [self runAction:_moveAnimation withKey:@"moveAction"];
         }
-    } else {
-        newPosition = CGPointMake(currentPosition.x + _velocity.x * [dt doubleValue], currentPosition.y + _velocity.y * [dt doubleValue]);
+        
+        CGPoint currentPosition = self.position;
+        CGPoint newPosition;
+        
+        if ([_wayPoints count] > 0){
+            CGPoint targetPoint = [[_wayPoints firstObject] CGPointValue];
+            
+            CGPoint offset = CGPointMake(targetPoint.x - currentPosition.x, targetPoint.y - currentPosition.y);
+            CGFloat length = sqrtf(offset.x * offset.x + offset.y * offset.y);
+            CGPoint direction = CGPointMake(offset.x/length, offset.y/length);
+            _velocity = CGPointMake(direction.x * POINTS_PER_SEC, direction.y * POINTS_PER_SEC);
+            
+            newPosition = CGPointMake(currentPosition.x + _velocity.x * [dt doubleValue], currentPosition.y + _velocity.y * [dt doubleValue]);
+            
+            if(CGRectContainsPoint(self.frame, targetPoint)){
+                [_wayPoints removeObjectAtIndex:0];
+            }
+        } else {
+            newPosition = CGPointMake(currentPosition.x + _velocity.x * [dt doubleValue], currentPosition.y + _velocity.y * [dt doubleValue]);
+        }
+        
+        self.position = [self checkBoundaries:newPosition];
+        self.zRotation = atan2f(_velocity.y, _velocity.x) + M_PI_2;
     }
+}
+
+-(void)moveRandom{
+    [_wayPoints removeAllObjects];
     
-    self.position = [self checkBoundaries:newPosition];
-    self.zRotation = atan2f(_velocity.y, _velocity.x) + M_PI_2;
+    int width = (int)CGRectGetWidth(self.scene.frame);
+    int height = (int)CGRectGetHeight(self.scene.frame);
+    
+    CGPoint randomPoint = CGPointMake(arc4random() % width, arc4random() % height);
+    [_wayPoints addObject:[NSValue valueWithCGPoint:randomPoint]];
 }
 
 -(CGPathRef)createPathToMove{
@@ -110,5 +126,20 @@ static const int POINTS_PER_SEC = 80;
     
     _velocity = newVelocity;
     return newPosition;
+}
+
+-(void)eat{
+    if (_hungry) {
+        [self removeActionForKey:@"moveAction"];
+        _eating = YES;
+        _hungry = NO;
+        
+        SKAction *blockAction = [SKAction runBlock:^{
+            _eating = NO;
+            [self moveRandom];
+        }];
+        
+        [self runAction:[SKAction sequence:@[[SKAction waitForDuration:1.0], blockAction]]];
+    }
 }
 @end
