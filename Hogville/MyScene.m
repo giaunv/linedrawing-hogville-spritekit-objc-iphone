@@ -107,7 +107,9 @@
     foodNode.name = @"food";
     foodNode.zPosition = 0;
     foodNode.position = CGPointMake(250.0f, 200.0f);
-    
+    foodNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:foodNode.size];
+    foodNode.physicsBody.categoryBitMask = LDPhysicsCategoryFood;
+    foodNode.physicsBody.dynamic = NO;
     [self addChild:foodNode];
     
     self.homeNode = [SKSpriteNode spriteNodeWithImageNamed:@"barn"];

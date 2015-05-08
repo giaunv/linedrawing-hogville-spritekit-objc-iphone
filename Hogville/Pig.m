@@ -7,6 +7,7 @@
 //
 
 #import "Pig.h"
+#import "MyScene.h"
 
 static const int POINTS_PER_SEC = 80;
 
@@ -24,6 +25,11 @@ static const int POINTS_PER_SEC = 80;
         SKTexture *texture2 = [SKTexture textureWithImageNamed:@"pig_2"];
         SKTexture *texture3 = [SKTexture textureWithImageNamed:@"pig_3"];
         _moveAnimation = [SKAction animateWithTextures:@[texture1, texture2, texture3] timePerFrame:0.1];
+        
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.size.width / 2.0f];
+        self.physicsBody.categoryBitMask = LDPhysicsCategoryAnimal;
+        self.physicsBody.contactTestBitMask = LDPhysicsCategoryAnimal | LDPhysicsCategoryFood;
+        self.physicsBody.collisionBitMask = kNilOptions;
     }
     
     return self;
