@@ -18,6 +18,7 @@
     NSTimeInterval _lastUpdateTime;
     NSTimeInterval _dt;
     NSTimeInterval _currentSpawnTime;
+    BOOL _gameOver;
 }
 
 -(id)initWithSize:(CGSize)size {    
@@ -32,6 +33,10 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (_gameOver) {
+        [self restartGame];
+    }
+    
     CGPoint touchPoint = [[touches anyObject] locationInNode:self.scene];
     SKNode *node = [self nodeAtPoint:touchPoint];
     
@@ -49,14 +54,16 @@
 }
 
 -(void)update:(CFTimeInterval)currentTime {
-    _dt = currentTime - _lastUpdateTime;
-    _lastUpdateTime = currentTime;
-    
-    [self enumerateChildNodesWithName:@"pig" usingBlock:^(SKNode *node, BOOL *stop) {
-        [(Pig *)node move:@(_dt)];
-    }];
-    
-    [self drawLines];
+    if (!_gameOver) {
+        _dt = currentTime - _lastUpdateTime;
+        _lastUpdateTime = currentTime;
+        
+        [self enumerateChildNodesWithName:@"pig" usingBlock:^(SKNode *node, BOOL *stop) {
+            [(Pig *)node move:@(_dt)];
+        }];
+        
+        [self drawLines];
+    }
 }
 
 -(void)didBeginContact:(SKPhysicsContact *)contact{
@@ -66,7 +73,7 @@
     uint32_t collision = firstNode.physicsBody.categoryBitMask | secondNode.physicsBody.categoryBitMask;
     
     if(collision == (LDPhysicsCategoryAnimal | LDPhysicsCategoryAnimal)) {
-        NSLog(@"Animal collision detected");
+        [self handleAnimalCollision];
     } else if(collision == (LDPhysicsCategoryAnimal | LDPhysicsCategoryFood)) {
         if ([firstNode.name isEqualToString:@"pig"]) {
             [(Pig *)firstNode eat];
@@ -124,6 +131,10 @@
 }
 
 -(void)spawnAnimal{
+    if (_gameOver) {
+        return;
+    }
+    
     _currentSpawnTime -= 0.2;
     
     if (_currentSpawnTime < 1.0) {
@@ -139,4 +150,43 @@
     
     [self runAction:[SKAction sequence:@[[SKAction waitForDuration:_currentSpawnTime], [SKAction performSelector:@selector(spawnAnimal) onTarget:self]]]];
 }
+
+- (void)handleAnimalCollision {
+    _gameOver = YES;
+    
+    SKLabelNode *gameOverLabel = [SKLabelNode labelNodeWithFontNamed:@"Thonburi-Bold"];
+    gameOverLabel.text = @"Game Over!";
+    gameOverLabel.name = @"label";
+    gameOverLabel.fontSize = 35.0f;
+    gameOverLabel.position = CGPointMake(self.size.width / 2.0f, self.size.height / 2.0f + 20.0f);
+    gameOverLabel.zPosition = 5;
+    
+    SKLabelNode *tapLabel = [SKLabelNode labelNodeWithFontNamed:@"Thonburi-Bold"];
+    tapLabel.text = @"Tap to restart.";
+    tapLabel.name = @"label";
+    tapLabel.fontSize = 25.0f;
+    tapLabel.position = CGPointMake(self.size.width / 2.0f, self.size.height / 2.0f - 20.0f);
+    tapLabel.zPosition = 5;
+    [self addChild:gameOverLabel];
+    [self addChild:tapLabel];
+}
+
+- (void)restartGame {
+    [self enumerateChildNodesWithName:@"line" usingBlock:^(SKNode *node, BOOL *stop) {
+        [node removeFromParent];
+    }];
+    
+    [self enumerateChildNodesWithName:@"pig" usingBlock:^(SKNode *node, BOOL *stop) {
+        [node removeFromParent];
+    }];
+    
+    [self enumerateChildNodesWithName:@"label" usingBlock:^(SKNode *node, BOOL *stop) {
+        [node removeFromParent];
+    }];
+    
+    _currentSpawnTime = 5.0f;
+    _gameOver = NO;
+    [self spawnAnimal];
+}
+
 @end
